@@ -5,12 +5,8 @@ import com.google.gson.Gson
 import com.strangelove.cadastre.data.model.network.ApiErrorModel
 import retrofit2.Response
 import java.util.regex.Pattern
-import javax.inject.Inject
 
 sealed class ApiResponse<T> {
-    @Inject
-    lateinit var gson: Gson
-
     companion object {
         fun <T> create(error: Throwable): ApiErrorResponse<T> {
             val apiErrorModel: ApiErrorModel? = try {
