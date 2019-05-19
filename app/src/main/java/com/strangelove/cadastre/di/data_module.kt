@@ -39,7 +39,6 @@ fun createWebService(okHttpClient: OkHttpClient, gson: Gson): CadastreApi {
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(LiveDataCallAdapterFactory(gson))
-        //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
     return retrofit.create(CadastreApi::class.java)
 }
