@@ -19,7 +19,7 @@ val dataModule = applicationContext {
 }
 
 object DatasourceProperties {
-    const val SERVER_URL = "https://lenta.com/api/v1/"
+    const val SERVER_URL = "https://api.github.com/"
     const val TIMEOUT = 60L
 }
 
