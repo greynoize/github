@@ -1,10 +1,11 @@
 package com.strangelove.cadastre.data.network
 
-import androidx.lifecycle.LiveData
 import com.strangelove.cadastre.data.model.network.City
+import io.reactivex.Single
+import retrofit2.Response
 import retrofit2.http.GET
 
-interface CadastreApi {
+interface GithubApi {
     @GET("cities")
-    fun getCity(): LiveData<ApiResponse<MutableList<City>>>
+    fun getCity(): Single<Response<MutableList<City>>>
 }
