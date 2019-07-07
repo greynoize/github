@@ -74,19 +74,10 @@ class RepositoriesAdapter(
         notifyDataSetChanged()
     }
 
-    private fun add(it: RepositoryInfo?) {
-        if (it != null) {
-            repositoriesItems.add(it)
-        } else {
-            repositoriesItems.add(null)
-        }
-
-        notifyItemInserted(repositoriesItems.size - 1)
-    }
-
     fun addLoadingFooter() {
         if (repositoriesItems.last() != null) {
-            add(null)
+            repositoriesItems.add(null)
+            notifyItemInserted(repositoriesItems.size - 1)
         }
     }
 
