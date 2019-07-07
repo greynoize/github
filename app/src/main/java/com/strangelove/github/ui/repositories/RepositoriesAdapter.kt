@@ -10,16 +10,32 @@ import com.strangelove.github.data.model.repository.RepositoryInfo
 import com.strangelove.github.databinding.RepositoriesItemLayoutBinding
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryInfo?>, private val onRepoClick: (RepositoryInfo) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RepositoriesAdapter(
+    private var repositoriesItems: MutableList<RepositoryInfo?>,
+    private val onRepoClick: (RepositoryInfo) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         lateinit var viewHolder: RecyclerView.ViewHolder
 
         when (viewType) {
             ITEM -> {
-                viewHolder = ItemViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.repositories_item_layout, parent, false))
+                viewHolder = ItemViewHolder(
+                    DataBindingUtil.inflate(
+                        LayoutInflater.from(parent.context),
+                        R.layout.repositories_item_layout,
+                        parent,
+                        false
+                    )
+                )
             }
             LOADER -> {
-                viewHolder = LoadingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.repositories_item_loading_layout, parent, false))
+                viewHolder = LoadingViewHolder(
+                    LayoutInflater.from(parent.context).inflate(
+                        R.layout.repositories_item_loading_layout,
+                        parent,
+                        false
+                    )
+                )
             }
         }
 
@@ -69,7 +85,9 @@ class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryI
     }
 
     fun addLoadingFooter() {
-        add(null)
+        if (repositoriesItems.last() != null) {
+            add(null)
+        }
     }
 
     private fun removeLoadingFooter() {
