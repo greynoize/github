@@ -45,7 +45,7 @@ class RepositoriesFragment: Fragment() {
 
         }
 
-        baseViewModel.requestResositories()
+        baseViewModel.requestRepositories()
         repositories_recyclerView.adapter = adapter
         repositories_recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     }

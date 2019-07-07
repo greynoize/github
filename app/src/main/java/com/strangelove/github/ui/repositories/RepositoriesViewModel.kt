@@ -22,7 +22,7 @@ class RepositoriesViewModel(private val githubRepository: GithubRepository) : Ba
     fun getRepositoriesList() = mRepositoriesList
 
     @SuppressLint("CheckResult")
-    fun requestResositories() {
+    fun requestRepositories() {
         githubRepository.getRepositories()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
