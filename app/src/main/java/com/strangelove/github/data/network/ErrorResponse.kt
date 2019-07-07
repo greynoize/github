@@ -1,4 +1,4 @@
-package com.strangelove.cadastre.data.network
+package com.strangelove.github.data.network
 
 data class ErrorResponse (
     val code: Int?,

@@ -1,12 +1,12 @@
-package com.strangelove.cadastre.ui.main
+package com.strangelove.github.ui.main
 
 import android.annotation.SuppressLint
 import androidx.databinding.Bindable
-import com.strangelove.cadastre.BR
-import com.strangelove.cadastre.base.BaseViewModel
-import com.strangelove.cadastre.data.model.network.City
-import com.strangelove.cadastre.data.network.NetworkCallbackWrapper
-import com.strangelove.cadastre.data.network.test.GithubRepository
+import com.strangelove.github.BR
+import com.strangelove.github.base.BaseViewModel
+import com.strangelove.github.data.model.network.City
+import com.strangelove.github.data.network.NetworkCallbackWrapper
+import com.strangelove.github.data.network.test.GithubRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response

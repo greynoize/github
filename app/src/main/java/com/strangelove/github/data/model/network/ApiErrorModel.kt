@@ -1,4 +1,4 @@
-package com.strangelove.cadastre.data.model.network
+package com.strangelove.github.data.model.network
 
 data class ApiErrorModel(
     val error: String? = null,

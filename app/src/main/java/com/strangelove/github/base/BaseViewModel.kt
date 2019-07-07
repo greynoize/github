@@ -1,13 +1,12 @@
-package com.strangelove.cadastre.base
+package com.strangelove.github.base
 
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
-import com.strangelove.cadastre.BR
-import com.strangelove.cadastre.data.network.ErrorResponse
-import io.reactivex.disposables.CompositeDisposable
+import com.strangelove.github.BR
+import com.strangelove.github.data.network.ErrorResponse
 
 abstract class BaseViewModel: ViewModel(), Observable, LifecycleObserver {
     @Transient

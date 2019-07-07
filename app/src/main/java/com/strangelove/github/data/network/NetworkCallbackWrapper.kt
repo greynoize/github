@@ -1,6 +1,6 @@
-package com.strangelove.cadastre.data.network
+package com.strangelove.github.data.network
 
-import com.strangelove.cadastre.base.BaseViewModel
+import com.strangelove.github.base.BaseViewModel
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
 import retrofit2.HttpException

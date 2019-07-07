@@ -1,9 +1,9 @@
-package com.strangelove.cadastre.di
+package com.strangelove.github.di
 
 import com.google.gson.Gson
-import com.strangelove.cadastre.data.network.GithubApi
-import com.strangelove.cadastre.di.DatasourceProperties.SERVER_URL
-import com.strangelove.cadastre.di.DatasourceProperties.TIMEOUT
+import com.strangelove.github.data.network.GithubApi
+import com.strangelove.github.di.DatasourceProperties.SERVER_URL
+import com.strangelove.github.di.DatasourceProperties.TIMEOUT
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module.applicationContext

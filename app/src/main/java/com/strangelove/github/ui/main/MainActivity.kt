@@ -1,10 +1,10 @@
-package com.strangelove.cadastre.ui.main
+package com.strangelove.github.ui.main
 
 import androidx.databinding.Observable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.strangelove.cadastre.BR
-import com.strangelove.cadastre.R
+import com.strangelove.github.BR
+import com.strangelove.github.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.koin.android.architecture.ext.viewModel

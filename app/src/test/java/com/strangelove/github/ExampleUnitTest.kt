@@ -1,4 +1,4 @@
-package com.strangelove.cadastre
+package com.strangelove.github
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.strangelove.cadastre
+package com.strangelove.github
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.strangelove.cadastre", appContext.packageName)
+        assertEquals("com.strangelove.github", appContext.packageName)
     }
 }
