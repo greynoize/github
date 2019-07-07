@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 
 class RepositoriesViewModel(private val githubRepository: GithubRepository) : BaseViewModel() {
-    private var mRepositoriesList = mutableListOf<RepositoryInfo>()
+    private var mRepositoriesList = mutableListOf<RepositoryInfo?>()
         set (value) {
             mRepositoriesList.addAll(value)
             notifyPropertyChanged(BR.repositoriesList)
@@ -26,12 +26,13 @@ class RepositoriesViewModel(private val githubRepository: GithubRepository) : Ba
         githubRepository.getRepositories()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : NetworkCallbackWrapper<Response<MutableList<RepositoryInfo>>>(this) {
-                override fun onSuccess(t: Response<MutableList<RepositoryInfo>>) {
+            .subscribeWith(object : NetworkCallbackWrapper<Response<MutableList<RepositoryInfo?>>>(this) {
+                override fun onSuccess(t: Response<MutableList<RepositoryInfo?>>) {
                     val response = t.body()
 
                     if (response != null) {
                         mRepositoriesList = response
+                        notifyPropertyChanged(BR.repositoriesList)
                     }
                 }
             })

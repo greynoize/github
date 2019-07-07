@@ -40,7 +40,7 @@
             android:id="@+id/repositoryItem_ownerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8dp"
+            android:layout_marginTop="@dimen/margin_4dp"
             android:layout_marginEnd="@dimen/margin_32dp"
             android:ellipsize="end"
             android:maxLines="1"

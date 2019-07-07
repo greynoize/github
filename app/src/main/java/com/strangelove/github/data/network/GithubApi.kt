@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface GithubApi {
     @GET("repositories")
-    fun getRepositories(): Single<Response<MutableList<RepositoryInfo>>>
+    fun getRepositories(): Single<Response<MutableList<RepositoryInfo?>>>
 }

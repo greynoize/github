@@ -33,6 +33,7 @@ class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryI
             ITEM -> {
                 val item = repositoriesItems[position]
                 (holder as ItemViewHolder).binding.item = item
+                holder.binding.executePendingBindings()
 
                 onClick {
                     onRepoClick(item!!)
@@ -45,7 +46,7 @@ class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryI
         }
     }
 
-    override fun getItemViewType(position: Int) = if (repositoriesItems[position] == null) ITEM else LOADER
+    override fun getItemViewType(position: Int) = if (repositoriesItems[position] != null) ITEM else LOADER
 
     class ItemViewHolder(var binding: RepositoriesItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
