@@ -1,7 +1,7 @@
 package com.strangelove.cadastre.ui.main
 
-import android.databinding.Observable
-import android.support.v7.app.AppCompatActivity
+import androidx.databinding.Observable
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.strangelove.cadastre.BR
 import com.strangelove.cadastre.R

@@ -1,6 +1,6 @@
 package com.strangelove.cadastre.ui.main
 
-import android.databinding.Bindable
+import androidx.databinding.Bindable
 import com.strangelove.cadastre.BR
 import com.strangelove.cadastre.base.BaseViewModel
 import com.strangelove.cadastre.data.network.ApiErrorResponse

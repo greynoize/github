@@ -1,6 +1,6 @@
 package com.strangelove.cadastre.data.network
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.strangelove.cadastre.data.model.network.City
 import retrofit2.http.GET
 

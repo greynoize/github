@@ -1,10 +1,10 @@
 package com.strangelove.cadastre.base
 
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.ViewModel
-import android.databinding.Bindable
-import android.databinding.Observable
-import android.databinding.PropertyChangeRegistry
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.ViewModel
+import androidx.databinding.Bindable
+import androidx.databinding.Observable
+import androidx.databinding.PropertyChangeRegistry
 import com.strangelove.cadastre.BR
 
 abstract class BaseViewModel: ViewModel(), Observable, LifecycleObserver {
