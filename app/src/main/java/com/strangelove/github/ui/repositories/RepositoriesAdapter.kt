@@ -45,6 +45,18 @@ class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryI
         }
     }
 
+    override fun getItemViewType(position: Int) = if (repositoriesItems[position] == null) ITEM else LOADER
+
+    class ItemViewHolder(var binding: RepositoriesItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+
+    class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    fun setRepositoriesItems(repositoriesItems: MutableList<RepositoryInfo?>) {
+        removeLoadingFooter()
+        this.repositoriesItems = repositoriesItems
+        notifyDataSetChanged()
+    }
+
     private fun add(it: RepositoryInfo?) {
         if (it != null) {
             repositoriesItems.add(it)
@@ -69,18 +81,6 @@ class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryI
                 notifyItemRemoved(position)
             }
         }
-    }
-
-    override fun getItemViewType(position: Int) = if (repositoriesItems[position] == null) ITEM else LOADER
-
-    class ItemViewHolder(binding: RepositoriesItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
-
-    class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-    fun setRepositoriesItems(repositoriesItems: MutableList<RepositoryInfo?>) {
-        removeLoadingFooter()
-        this.repositoriesItems = repositoriesItems
-        notifyDataSetChanged()
     }
 
     private companion object {
