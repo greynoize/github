@@ -1,4 +1,4 @@
-package com.strangelove.github.ui.repositories
+package com.strangelove.github.ui.repositories.repositories_list
 
 import android.annotation.SuppressLint
 import androidx.databinding.Bindable

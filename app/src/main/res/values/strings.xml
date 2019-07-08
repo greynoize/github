@@ -3,4 +3,7 @@
 
     <string name="main_tabs_repositories">Public repositories</string>
     <string name="main_tabs_profile">My profile</string>
+    <string name="repositoryInfo_private">Private repository</string>
+    <string name="repositoryInfo_public">Public repository</string>
+    <string name="repositoryInfo_createdBy">Created by %1$s</string>
 </resources>

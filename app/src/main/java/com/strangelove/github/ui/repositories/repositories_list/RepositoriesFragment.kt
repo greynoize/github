@@ -1,4 +1,4 @@
-package com.strangelove.github.ui.repositories
+package com.strangelove.github.ui.repositories.repositories_list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,15 +14,18 @@ import com.strangelove.github.R
 import kotlinx.android.synthetic.main.repositories_layout.*
 import org.koin.android.architecture.ext.viewModel
 import com.strangelove.github.databinding.RepositoriesLayoutBinding
+import com.strangelove.github.ui.repositories.repository_info.RepositoryActivity
+import org.jetbrains.anko.support.v4.startActivity
 
-class RepositoriesFragment: Fragment() {
+class RepositoriesFragment : Fragment() {
     private val baseViewModel: RepositoriesViewModel by viewModel()
-    lateinit var adapter: RepositoriesAdapter
-    lateinit var layoutManager: LinearLayoutManager
-    lateinit var onPropertyChangedCallback: Observable.OnPropertyChangedCallback
+    private lateinit var adapter: RepositoriesAdapter
+    private lateinit var layoutManager: LinearLayoutManager
+    private lateinit var onPropertyChangedCallback: Observable.OnPropertyChangedCallback
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding: RepositoriesLayoutBinding = DataBindingUtil.inflate(inflater, R.layout.repositories_layout, container, false)
+        val binding: RepositoriesLayoutBinding =
+            DataBindingUtil.inflate(inflater, R.layout.repositories_layout, container, false)
         binding.viewModel = baseViewModel
 
         onPropertyChangedCallback = object : Observable.OnPropertyChangedCallback() {
@@ -44,7 +47,7 @@ class RepositoriesFragment: Fragment() {
 
         layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         adapter = RepositoriesAdapter(baseViewModel.getRepositoriesList()) {
-
+            startActivity(RepositoryActivity.getRepositoryActivityIntent(activity!!, it))
         }
 
         repositories_recyclerView.adapter = adapter

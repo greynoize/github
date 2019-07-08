@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.strangelove.github.ui.repositories.RepositoriesViewModel" />
+            type="com.strangelove.github.ui.repositories.repositories_list.RepositoriesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

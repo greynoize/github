@@ -1,5 +1,9 @@
 package com.strangelove.github.data.model.repository
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class RepositoryInfo(
     val archive_url: String?,
     val assignees_url: String?,
@@ -48,4 +52,4 @@ data class RepositoryInfo(
     val teams_url: String?,
     val trees_url: String?,
     val url: String?
-)
+) : Parcelable

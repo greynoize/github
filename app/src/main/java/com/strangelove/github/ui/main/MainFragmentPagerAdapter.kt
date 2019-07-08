@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.strangelove.github.R
 import com.strangelove.github.ui.profile.ProfileFragment
-import com.strangelove.github.ui.repositories.RepositoriesFragment
+import com.strangelove.github.ui.repositories.repositories_list.RepositoriesFragment
 
 class MainFragmentPagerAdapter(fragmentManager: FragmentManager, private val context: Context): FragmentPagerAdapter(fragmentManager) {
     override fun getItem(position: Int): Fragment {

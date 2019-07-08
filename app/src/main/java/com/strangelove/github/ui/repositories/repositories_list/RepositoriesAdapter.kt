@@ -1,4 +1,4 @@
-package com.strangelove.github.ui.repositories
+package com.strangelove.github.ui.repositories.repositories_list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,23 +19,25 @@ class RepositoriesAdapter(
 
         when (viewType) {
             ITEM -> {
-                viewHolder = ItemViewHolder(
-                    DataBindingUtil.inflate(
-                        LayoutInflater.from(parent.context),
-                        R.layout.repositories_item_layout,
-                        parent,
-                        false
+                viewHolder =
+                    ItemViewHolder(
+                        DataBindingUtil.inflate(
+                            LayoutInflater.from(parent.context),
+                            R.layout.repositories_item_layout,
+                            parent,
+                            false
+                        )
                     )
-                )
             }
             LOADER -> {
-                viewHolder = LoadingViewHolder(
-                    LayoutInflater.from(parent.context).inflate(
-                        R.layout.repositories_item_loading_layout,
-                        parent,
-                        false
+                viewHolder =
+                    LoadingViewHolder(
+                        LayoutInflater.from(parent.context).inflate(
+                            R.layout.repositories_item_loading_layout,
+                            parent,
+                            false
+                        )
                     )
-                )
             }
         }
 
