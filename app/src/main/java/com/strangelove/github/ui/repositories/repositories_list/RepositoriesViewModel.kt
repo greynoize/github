@@ -33,6 +33,7 @@ class RepositoriesViewModel(private val githubRepository: GithubRepository) : Ba
                 .subscribeWith(object : NetworkCallbackWrapper<Response<MutableList<RepositoryInfo?>>>(this) {
                     override fun onSubscribe(d: Disposable) {
                         super.onSubscribe(d)
+                        mError = false
                         mLoading = true
                     }
 

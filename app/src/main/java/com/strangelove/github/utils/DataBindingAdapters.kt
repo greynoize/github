@@ -1,5 +1,6 @@
 package com.strangelove.github.utils
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -23,6 +24,15 @@ fun dateFromString(textView: TextView, dateInString: String?) {
     if (dateInString != null) {
         val date = Const.DATE_FORMAT.parse(dateInString)
         textView.text = textView.context.getString(R.string.profile_createdAt, Const.VIEW_DATE_FORMAT.format(date))
+    }
+}
+
+@BindingAdapter("app:visibility")
+fun visibility(view: View, isVisible: Boolean) {
+    if (isVisible) {
+        view.visibility = View.VISIBLE
+    } else {
+        view.visibility = View.GONE
     }
 }
 

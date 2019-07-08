@@ -29,28 +29,39 @@ class ProfileViewModel(private val githubRepository: GithubRepository) : BaseVie
 
     @SuppressLint("CheckResult")
     fun loadProfile() {
-        githubRepository.getProfile()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(object : NetworkCallbackWrapper<Response<Profile>>(this) {
-                override fun onSubscribe(d: Disposable) {
-                    super.onSubscribe(d)
-                    mLoading = true
-                }
+        if (!mLoading) {
+            githubRepository.getProfile()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : NetworkCallbackWrapper<Response<Profile>>(this) {
+                    override fun onSubscribe(d: Disposable) {
+                        super.onSubscribe(d)
+                        mError = false
+                        mLoading = true
 
-                override fun onSuccess(t: Response<Profile>) {
-                    mLoading = false
-                    val response = t.body()
-
-                    if (response != null) {
-                        setProfile(response)
+                        notifyPropertyChanged(BR.profileVisible)
                     }
-                }
 
-                override fun onError(e: Throwable) {
-                    super.onError(e)
-                    mLoading = false
-                }
-            })
+                    override fun onSuccess(t: Response<Profile>) {
+                        mLoading = false
+                        val response = t.body()
+
+                        if (response != null) {
+                            setProfile(response)
+                        }
+
+                        notifyPropertyChanged(BR.profileVisible)
+                    }
+
+                    override fun onError(e: Throwable) {
+                        super.onError(e)
+                        mLoading = false
+                        notifyPropertyChanged(BR.profileVisible)
+                    }
+                })
+        }
     }
+
+    @Bindable
+    fun isProfileVisible() = !isLoading() && !isError()
 }

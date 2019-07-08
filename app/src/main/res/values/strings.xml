@@ -7,4 +7,6 @@
     <string name="repositoryInfo_public">Public repository</string>
     <string name="repositoryInfo_createdBy">Created by %1$s</string>
     <string name="profile_createdAt">Created at %1$s</string>
+    <string name="repositories_errorText">An error has occurred</string>
+    <string name="repositories_retry">Retry</string>
 </resources>

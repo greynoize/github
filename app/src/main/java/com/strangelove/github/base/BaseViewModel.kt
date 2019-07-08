@@ -18,20 +18,17 @@ abstract class BaseViewModel: ViewModel(), Observable, LifecycleObserver {
             notifyPropertyChanged(BR.loading)
         }
 
+    protected var mError: Boolean = false
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.error)
+        }
+
     @Bindable
     fun isLoading(): Boolean = mLoading
 
     @Bindable
-    fun isNetworkError() = true
-
-    @Bindable
-    fun isTimeoutError() = true
-
-    @Bindable
-    fun isUnknownError() = true
-
-    @Bindable
-    fun isResponseError() = true
+    fun isError() = mError
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback) {
         synchronized(this) {
@@ -69,19 +66,21 @@ abstract class BaseViewModel: ViewModel(), Observable, LifecycleObserver {
         mCallbacks!!.notifyCallbacks(this, fieldId, null)
     }
 
+    // Every error type can be specified here, but for the simplicity in this test project was created just a one error var
+
     open fun onResponseError(error: ErrorResponse) {
-        notifyPropertyChanged(BR.responseError)
+        mError = true
     }
 
     fun onNetworkError() {
-        notifyPropertyChanged(BR.networkError)
+        mError = true
     }
 
     fun onTimeoutError() {
-        notifyPropertyChanged(BR.timeoutError)
+        mError = true
     }
 
     fun onUnknownError() {
-        notifyPropertyChanged(BR.unknownError)
+        mError = true
     }
 }
