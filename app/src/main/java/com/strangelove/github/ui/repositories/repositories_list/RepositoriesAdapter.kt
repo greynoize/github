@@ -41,18 +41,14 @@ class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryI
                     onRepoClick(item!!)
                 }
             }
-
-            LOADER -> {
-
-            }
         }
     }
 
     override fun getItemViewType(position: Int) = if (repositoriesItems[position] != null) ITEM else LOADER
 
-    class ItemViewHolder(var binding: RepositoriesItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ItemViewHolder(var binding: RepositoriesItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
-    class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun setRepositoriesItems(repositoriesItems: MutableList<RepositoryInfo?>) {
         val positionStart = this.repositoriesItems.size

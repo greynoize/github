@@ -6,7 +6,7 @@ import com.strangelove.github.BR
 import com.strangelove.github.base.BaseViewModel
 import com.strangelove.github.data.model.repository.RepositoryInfo
 import com.strangelove.github.data.network.NetworkCallbackWrapper
-import com.strangelove.github.data.network.test.GithubRepository
+import com.strangelove.github.data.network.github.GithubRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

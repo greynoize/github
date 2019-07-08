@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,8 +10,7 @@
             type="com.strangelove.github.ui.repositories.repositories_list.RepositoriesViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
@@ -18,15 +19,16 @@
             android:id="@+id/repositories_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/repositories_item_layout"
-            app:visibility="@{!viewModel.error}"/>
+            android:scrollbars="vertical"
+            app:visibility="@{!viewModel.error}"
+            tools:listitem="@layout/repositories_item_layout" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/repositories_errorLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:visibility="gone"
-            app:visibility="@{viewModel.error}">
+            app:visibility="@{viewModel.error}"
+            tools:visibility="gone">
 
             <TextView
                 android:id="@+id/repositories_errorText"
@@ -43,11 +45,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8dp"
+                android:onClick="@{() -> viewModel.requestRepositories()}"
                 android:text="@string/repositories_retry"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/repositories_errorText"
-                android:onClick="@{() -> viewModel.requestRepositories()}"/>
+                app:layout_constraintTop_toBottomOf="@id/repositories_errorText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

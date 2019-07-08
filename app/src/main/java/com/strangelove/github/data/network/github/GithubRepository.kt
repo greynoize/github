@@ -1,4 +1,4 @@
-package com.strangelove.github.data.network.test
+package com.strangelove.github.data.network.github
 
 import com.strangelove.github.data.model.profile.Profile
 import com.strangelove.github.data.model.repository.RepositoryInfo

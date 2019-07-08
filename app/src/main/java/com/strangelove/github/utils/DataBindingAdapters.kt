@@ -8,8 +8,6 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.strangelove.github.R
-import java.text.SimpleDateFormat
-import java.util.*
 
 @BindingAdapter("app:loadImage")
 fun loadImage(view: ImageView, url: String?) {

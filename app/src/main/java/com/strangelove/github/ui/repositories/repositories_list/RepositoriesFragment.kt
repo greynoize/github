@@ -81,6 +81,6 @@ class RepositoriesFragment : Fragment() {
     }
 
     private companion object {
-        private const val BORDER_ITEMS_COUNT = 3
+        private const val BORDER_ITEMS_COUNT = 1
     }
 }

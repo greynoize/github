@@ -25,7 +25,6 @@ class RepositoryActivity : AppCompatActivity() {
 
         val binding: RepositoryInfoLayoutBinding = DataBindingUtil.setContentView(this, R.layout.repository_info_layout)
         binding.viewModel = repositoryViewModel
-        binding.lifecycleOwner = this
 
         onPropertyChangedCallback = object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {

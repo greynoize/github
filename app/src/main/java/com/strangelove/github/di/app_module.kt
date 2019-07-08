@@ -1,8 +1,8 @@
 package com.strangelove.github.di
 
 import com.strangelove.github.ui.repositories.repositories_list.RepositoriesViewModel
-import com.strangelove.github.data.network.test.GithubRepository
-import com.strangelove.github.data.network.test.GithubRepositoryImpl
+import com.strangelove.github.data.network.github.GithubRepository
+import com.strangelove.github.data.network.github.GithubRepositoryImpl
 import com.strangelove.github.ui.profile.ProfileViewModel
 import com.strangelove.github.ui.repositories.repository_info.RepositoryViewModel
 import org.koin.android.architecture.ext.viewModel

@@ -5,7 +5,6 @@ import com.strangelove.github.data.model.repository.RepositoryInfo
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface GithubApi {

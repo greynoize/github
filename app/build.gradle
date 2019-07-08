@@ -32,8 +32,6 @@ android {
 
 dependencies {
     def retrofitVersion = "2.6.0"
-    def roomVersion = "2.1.0"
-    def lifecycleVersion = "2.0.0"
     def glideVersion = "4.9.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -45,13 +43,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
-
-    implementation "androidx.room:room-runtime:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
-
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycleVersion"
-    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
     implementation 'com.google.code.gson:gson:2.8.5'
 

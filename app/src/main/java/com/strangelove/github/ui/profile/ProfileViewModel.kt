@@ -6,14 +6,11 @@ import com.strangelove.github.BR
 import com.strangelove.github.base.BaseViewModel
 import com.strangelove.github.data.model.profile.Profile
 import com.strangelove.github.data.network.NetworkCallbackWrapper
-import com.strangelove.github.data.network.test.GithubRepository
+import com.strangelove.github.data.network.github.GithubRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ProfileViewModel(private val githubRepository: GithubRepository) : BaseViewModel() {
     private var mProfile: Profile? = null
@@ -38,8 +35,6 @@ class ProfileViewModel(private val githubRepository: GithubRepository) : BaseVie
                         super.onSubscribe(d)
                         mError = false
                         mLoading = true
-
-                        notifyPropertyChanged(BR.profileVisible)
                     }
 
                     override fun onSuccess(t: Response<Profile>) {
@@ -49,19 +44,15 @@ class ProfileViewModel(private val githubRepository: GithubRepository) : BaseVie
                         if (response != null) {
                             setProfile(response)
                         }
-
-                        notifyPropertyChanged(BR.profileVisible)
                     }
 
                     override fun onError(e: Throwable) {
                         super.onError(e)
                         mLoading = false
-                        notifyPropertyChanged(BR.profileVisible)
                     }
                 })
         }
     }
 
-    @Bindable
     fun isProfileVisible() = !isLoading() && !isError()
 }
