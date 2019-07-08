@@ -10,34 +10,17 @@ import com.strangelove.github.data.model.repository.RepositoryInfo
 import com.strangelove.github.databinding.RepositoriesItemLayoutBinding
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class RepositoriesAdapter(
-    private var repositoriesItems: MutableList<RepositoryInfo?>,
-    private val onRepoClick: (RepositoryInfo) -> Unit
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryInfo?>, private val onRepoClick: (RepositoryInfo) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         lateinit var viewHolder: RecyclerView.ViewHolder
 
         when (viewType) {
             ITEM -> {
                 viewHolder =
-                    ItemViewHolder(
-                        DataBindingUtil.inflate(
-                            LayoutInflater.from(parent.context),
-                            R.layout.repositories_item_layout,
-                            parent,
-                            false
-                        )
-                    )
+                    ItemViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.repositories_item_layout, parent, false))
             }
             LOADER -> {
-                viewHolder =
-                    LoadingViewHolder(
-                        LayoutInflater.from(parent.context).inflate(
-                            R.layout.repositories_item_loading_layout,
-                            parent,
-                            false
-                        )
-                    )
+                viewHolder = LoadingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.repositories_item_loading_layout, parent, false))
             }
         }
 
@@ -50,6 +33,7 @@ class RepositoriesAdapter(
         when (getItemViewType(position)) {
             ITEM -> {
                 val item = repositoriesItems[position]
+
                 (holder as ItemViewHolder).binding.item = item
                 holder.binding.executePendingBindings()
 
@@ -71,8 +55,10 @@ class RepositoriesAdapter(
     class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun setRepositoriesItems(repositoriesItems: MutableList<RepositoryInfo?>) {
+        val positionStart = this.repositoriesItems.size
         this.repositoriesItems = repositoriesItems
-        notifyDataSetChanged()
+
+        notifyItemRangeInserted(positionStart, repositoriesItems.size - positionStart)
     }
 
     fun addLoadingFooter() {
