@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.strangelove.github.ui.repositories.repository_info.RepositoryViewModel" />
@@ -12,47 +13,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="@dimen/margin_16dp"
-        android:paddingTop="@dimen/margin_32dp"
-        android:paddingEnd="@dimen/margin_16dp"
-        android:paddingBottom="@dimen/margin_32dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/margin_16dp"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/repositoryInfo_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{viewModel.item.name}"
-            android:textColor="@color/black_highEmphasis"
+            android:textColor="@color/black"
             android:textSize="@dimen/textSize_18sp"
             android:textStyle="bold"
             tools:text="Repository name" />
+
         <LinearLayout
             android:id="@+id/repositoryInfo_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="@dimen/margin_8dp"
+            android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/repositoryInfo_ownerName">
 
             <ImageView
                 android:id="@+id/repositoryInfo_typeImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:src="@drawable/ic_lock_open"
-                android:src="@{viewModel.item.private ? @drawable/ic_lock_close : @drawable/ic_lock_open}"/>
+                android:src="@{viewModel.item.private ? @drawable/ic_lock_close : @drawable/ic_lock_open}"
+                tools:src="@drawable/ic_lock_open" />
 
             <TextView
                 android:id="@+id/repositoryInfo_typeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black_mediumEmphasis"
-                android:textSize="@dimen/textSize_14sp"
-                android:maxLines="1"
+                android:layout_gravity="center"
                 android:ellipsize="end"
+                android:maxLines="1"
                 android:text="@{viewModel.item.private ? @string/repositoryInfo_private : @string/repositoryInfo_public}"
-                tools:text="@string/repositoryInfo_public"
-                android:layout_gravity="center"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_14sp"
+                android:layout_marginStart="@dimen/margin_4dp"
+                tools:text="@string/repositoryInfo_public" />
         </LinearLayout>
 
         <TextView
@@ -61,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8dp"
             android:text="@{@string/repositoryInfo_createdBy(viewModel.item.owner.login)}"
-            android:textColor="@color/black_mediumEmphasis"
+            android:textColor="@color/black"
             android:textSize="@dimen/textSize_14sp"
             tools:text="Owner name" />
 
@@ -70,9 +71,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8dp"
-            android:text="@{viewModel.item.url}"
-            android:textColor="@color/black_mediumEmphasis"
+            android:text="@{viewModel.item.html_url}"
+            android:textColor="@color/black"
             android:textSize="@dimen/textSize_14sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{() -> viewModel.onLinkClick()}"
             tools:text="Link" />
 
         <TextView
@@ -81,8 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8dp"
             android:text="@{viewModel.item.description}"
-            android:textColor="@color/black_mediumEmphasis"
-            android:textSize="@dimen/textSize_14sp"
+            android:textColor="@color/black"
             tools:text="Description" />
     </LinearLayout>
 </layout>

@@ -16,4 +16,10 @@ class RepositoryViewModel: BaseViewModel() {
         notifyPropertyChanged(BR.item)
     }
 
+    fun onLinkClick() {
+        notifyPropertyChanged(BR.openRepoInBrowser)
+    }
+
+    @Bindable
+    fun getOpenRepoInBrowser()  = true
 }
