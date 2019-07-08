@@ -16,9 +16,9 @@ class RepositoriesAdapter(private var repositoriesItems: MutableList<RepositoryI
 
         when (viewType) {
             ITEM -> {
-                viewHolder =
-                    ItemViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.repositories_item_layout, parent, false))
+                viewHolder = ItemViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.repositories_item_layout, parent, false))
             }
+
             LOADER -> {
                 viewHolder = LoadingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.repositories_item_loading_layout, parent, false))
             }
