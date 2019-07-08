@@ -6,6 +6,6 @@ import io.reactivex.Single
 import retrofit2.Response
 
 interface GithubRepository {
-    fun getRepositories(): Single<Response<MutableList<RepositoryInfo?>>>
+    fun getRepositories(since: Int): Single<Response<MutableList<RepositoryInfo?>>>
     fun getProfile(): Single<Response<Profile>>
 }

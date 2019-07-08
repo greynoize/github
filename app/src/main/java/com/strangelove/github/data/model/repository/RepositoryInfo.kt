@@ -27,7 +27,7 @@ data class RepositoryInfo(
     val git_tags_url: String?,
     val git_url: String?,
     val html_url: String?,
-    val id: Int?,
+    val id: Int,
     val issue_comment_url: String?,
     val issue_events_url: String?,
     val issues_url: String?,

@@ -48,8 +48,8 @@ class ProfileViewModel(private val githubRepository: GithubRepository) : BaseVie
                 }
 
                 override fun onError(e: Throwable) {
-                    mLoading = false
                     super.onError(e)
+                    mLoading = false
                 }
             })
     }

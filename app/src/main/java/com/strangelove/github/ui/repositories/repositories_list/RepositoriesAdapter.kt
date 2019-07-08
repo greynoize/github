@@ -71,19 +71,18 @@ class RepositoriesAdapter(
     class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     fun setRepositoriesItems(repositoriesItems: MutableList<RepositoryInfo?>) {
-        removeLoadingFooter()
         this.repositoriesItems = repositoriesItems
         notifyDataSetChanged()
     }
 
     fun addLoadingFooter() {
-        if (repositoriesItems.last() != null) {
+        if (repositoriesItems.isEmpty() || repositoriesItems.last() != null) {
             repositoriesItems.add(null)
             notifyItemInserted(repositoriesItems.size - 1)
         }
     }
 
-    private fun removeLoadingFooter() {
+    fun removeLoadingFooter() {
         if (!repositoriesItems.isEmpty()) {
             val position = repositoriesItems.size - 1
             val item = repositoriesItems[position]

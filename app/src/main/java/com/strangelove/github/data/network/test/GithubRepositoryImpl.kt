@@ -7,6 +7,5 @@ import retrofit2.Response
 
 class GithubRepositoryImpl(private val api: GithubApi): GithubRepository {
     override fun getProfile(): Single<Response<Profile>> = api.getProfile()
-
-    override fun getRepositories() = api.getRepositories()
+    override fun getRepositories(since: Int) = api.getRepositories(since)
 }

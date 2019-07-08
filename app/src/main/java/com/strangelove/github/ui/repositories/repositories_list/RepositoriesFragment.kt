@@ -15,29 +15,36 @@ import kotlinx.android.synthetic.main.repositories_layout.*
 import org.koin.android.architecture.ext.viewModel
 import com.strangelove.github.databinding.RepositoriesLayoutBinding
 import com.strangelove.github.ui.repositories.repository_info.RepositoryActivity
-import org.jetbrains.anko.support.v4.startActivity
 
 class RepositoriesFragment : Fragment() {
-    private val baseViewModel: RepositoriesViewModel by viewModel()
+    private val reposViewModel: RepositoriesViewModel by viewModel()
     private lateinit var adapter: RepositoriesAdapter
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var onPropertyChangedCallback: Observable.OnPropertyChangedCallback
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: RepositoriesLayoutBinding = DataBindingUtil.inflate(inflater, R.layout.repositories_layout, container, false)
-        binding.viewModel = baseViewModel
+        binding.viewModel = reposViewModel
 
         onPropertyChangedCallback = object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                 when (propertyId) {
                     BR.repositoriesList -> {
-                        adapter.setRepositoriesItems(baseViewModel.getRepositoriesList())
+                        adapter.setRepositoriesItems(reposViewModel.getRepositoriesList())
+                    }
+
+                    BR.loading -> {
+                        if (reposViewModel.isLoading()) {
+                            adapter.addLoadingFooter()
+                        } else {
+                            adapter.removeLoadingFooter()
+                        }
                     }
                 }
             }
         }
 
-        baseViewModel.addOnPropertyChangedCallback(onPropertyChangedCallback)
+        reposViewModel.addOnPropertyChangedCallback(onPropertyChangedCallback)
         return binding.root
     }
 
@@ -45,7 +52,7 @@ class RepositoriesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        adapter = RepositoriesAdapter(baseViewModel.getRepositoriesList()) {
+        adapter = RepositoriesAdapter(reposViewModel.getRepositoriesList()) {
             startActivity(RepositoryActivity.getRepositoryActivityIntent(activity!!, it))
         }
 
@@ -60,17 +67,16 @@ class RepositoriesFragment : Fragment() {
                 val isEndOfList = lastVisibleItemPosition + BORDER_ITEMS_COUNT >= totalItemsCount
 
                 if (totalItemsCount > 0 && isEndOfList) {
-                    adapter.addLoadingFooter()
+                    reposViewModel.requestRepositories()
                 }
             }
         })
 
-        baseViewModel.requestRepositories()
-
+        reposViewModel.requestRepositories()
     }
 
     override fun onDestroy() {
-        baseViewModel.removeOnPropertyChangedCallback(onPropertyChangedCallback)
+        reposViewModel.removeOnPropertyChangedCallback(onPropertyChangedCallback)
         super.onDestroy()
     }
 
