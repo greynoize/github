@@ -24,8 +24,7 @@ class RepositoriesFragment : Fragment() {
     private lateinit var onPropertyChangedCallback: Observable.OnPropertyChangedCallback
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding: RepositoriesLayoutBinding =
-            DataBindingUtil.inflate(inflater, R.layout.repositories_layout, container, false)
+        val binding: RepositoriesLayoutBinding = DataBindingUtil.inflate(inflater, R.layout.repositories_layout, container, false)
         binding.viewModel = baseViewModel
 
         onPropertyChangedCallback = object : Observable.OnPropertyChangedCallback() {

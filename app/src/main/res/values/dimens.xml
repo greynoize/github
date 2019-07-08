@@ -20,4 +20,6 @@
     <dimen name="textSize_16sp">16sp</dimen>
     <dimen name="textSize_18sp">18sp</dimen>
     <dimen name="textSize_20sp">20sp</dimen>
+
+    <dimen name="profileImage_size">48dp</dimen>
 </resources>
